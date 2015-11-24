@@ -1,5 +1,5 @@
 set shell=bash		  " Pathogen plugin loader requires vanilla bash not zsh
-execute pathogen#infect() " Plugin loader module
+execute pathogen#infect() 
 syntax on		  " Enable basic syntax highlighting
 filetype plugin indent on " Try to autodetect indentation
 set nocompatible	  " Safely reset all configuration options
@@ -17,3 +17,4 @@ set wildmenu	          " Better command-line auto-completion
 set laststatus=2          " Always display status line on window
 set cmdheight=2		  " Sets command window height to 2 lines
 let g:syntastic_javascript_checkers=['jscs']
+let g:syntastic_sql_checkers=["sqlint"]
