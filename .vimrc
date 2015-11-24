@@ -3,6 +3,7 @@ set shell=bash		  " Pathogen plugin loader requires vanilla bash not zsh
 execute pathogen#infect() 
 syntax on		  " Enable basic syntax highlighting
 filetype plugin indent on " Try to autodetect indentation
+colorscheme onedark	  " Name of theme in .vim/colors
 set number		  " Display line numbers on the left
 set mouse=a	          " Allow cursor to be moved with the mouse
 set visualbell	          " Use a visual bell instead of beeping for invalid actions
@@ -19,14 +20,10 @@ set cmdheight=2		  " Sets command window height to 2 lines
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_check_on_wq=0
 let g:syntastic_javascript_checkers=['jscs']
 let g:syntastic_sql_checkers=["sqlint"]
 let g:syntastic_check_on_open=1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0

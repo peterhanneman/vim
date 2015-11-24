@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = git@github.com:scrooloose/syntastic.git
+[submodule ".vim/colors/onedark.vim"]
+	path = .vim/colors/onedark.vim
+	url = git@github.com:joshdick/onedark.vim.git
