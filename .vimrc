@@ -1,1 +1,14 @@
-syntax on
+set nocompatible " Safely reset all configuration options
+syntax on	 " Turn on basic syntax highlighting
+set number	 " Display line numbers on the left
+set mouse=a	 " Allow cursor to be moved with the mouse
+set visualbell	 " Use a visual bell instead of beeping for invalid actions
+set confirm	 " Instead of failing a command because of unsaved changes, prompt to save before continuing
+set ruler	 " Display the cursor position on the last line of window
+set autoindent	 " Default indentation of current line
+set ignorecase	 " Case insensitive search
+set smartcase	 " Case sensitive search only when using uppercase letters
+set hlsearch	 " Highlight searches
+set showcmd	 " Show partial commands on the last line of window
+set wildmenu	 " Better command-line auto-completion
+set laststatus=2 " Always display status line on window
