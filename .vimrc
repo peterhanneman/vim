@@ -18,3 +18,4 @@ set laststatus=2          " Always display status line on window
 set cmdheight=2		  " Sets command window height to 2 lines
 let g:syntastic_javascript_checkers=['jscs']
 let g:syntastic_sql_checkers=["sqlint"]
+let g:syntastic_check_on_open=1
