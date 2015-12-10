@@ -22,6 +22,7 @@ set undodir=~/.vim/undodir
 set undolevels=1000 undoreload=10000
 set undofile
 set shiftwidth=2
+set clipboard=unnamed
 set softtabstop=2
 set expandtab
 set smarttab
@@ -33,11 +34,13 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=0
+let g:syntastic_check_on_wq=1
 let g:syntastic_javascript_checkers=["jshint","jscs"]
 let g:syntastic_sql_checkers=["sqlint"]
-let g:syntastic_check_on_open=1
 let g:gitgutter_sign_column_always=1
+let g:gitgutter_eager=1
+let g:gitgutter_realtime=1
+let g:gitgutter_max_signs=512
 map [l :lprev             " Jump to previous linter error
 map ]l :lnext             " Jump to next linter error
 map Y y$                  " Make Y act like D and C - yank until EOL

@@ -27,6 +27,8 @@ DYLD_FORCE_FLAT_NAMESPACE=1 vim
 Possible to fix by passing -DPYTHON_LIBRARY and -DPYTHON_INCLUDE_DIR to Cmake
 -DPYTHON_LIBRARY=/System/Library/Frameworks/Python.framework/Versions/2.7/
 
+cmake -G "Unix Makefiles" -DPYTHON_LIBRARY=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=/System/Library/Frameworks/Python.framework/Versions/2.7/Headers . ../third_party/ycmd/cpp
+
 
 rvm use 2.2.2
 gem install sqlint
