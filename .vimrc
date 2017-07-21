@@ -1,46 +1,98 @@
-set nocompatible          " Safely reset all configuration options
-set shell=/bin/bash       " Pathogen plugin loader requires vanilla bash not zsh
-execute pathogen#infect()
-syntax on                 " Enable basic syntax highlighting
-filetype plugin indent on " Try to autodetect indentation
-colorscheme peter         " Name of theme in .vim/colors
-set background=dark       " Easier on the eyes
-set number                " Display line numbers on the left
-set mouse=a               " Allow cursor to be moved with the mouse
-set visualbell	          " Use a visual bell instead of beeping for invalid actions
-set confirm               " Instead of failing a command because of unsaved changes, prompt to save before continuing
-set ruler                 " Display the cursor position on the last line of window
-set autoindent	          " Default indentation of current line
-set ignorecase	          " Case insensitive search
-set smartcase             " Case sensitive search only when using uppercase letters
-set hlsearch              " Highlight searches
-set showcmd               " Show partial commands on the last line of window
-set wildmenu              " Better command-line auto-completion
-set laststatus=2          " Always display status line on window
-set cmdheight=2           " Sets command window height to 2 lines
-set undodir=~/.vim/undodir
-set undolevels=1000 undoreload=10000
+" Reset Vim configuration to sane defaults
+set nocompatible
+
+" Use ZSH shell
+set shell=/usr/local/bin/zsh
+
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'airblade/vim-gitgutter'
+Plug 'jacoborus/tender.vim'
+Plug 'lifepillar/pgsql.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'isruslan/vim-es6'
+Plug 'eslint/eslint'
+Plug 'tpope/vim-surround'
+call plug#end()
+
+" Setup 'tender' theme
+if (has("termguicolors"))
+   set termguicolors
+endif
+syntax enable
+colorscheme tender
+let g:airline_theme = 'tenderplus'
+
+" Display line numbers
+set number
+
+" Display the last command in bottom bar
+set showcmd
+
+" Always display airline
+set laststatus=2
+
+" Prevent excess redraws for faster macros and plugins
+set lazyredraw
+
+" Highlight current line
+set cursorline
+
+" Use a visual bell instead of an auditory beep for errors
+set visualbell
+
+" Display cursor position on last line of window
+set ruler
+
+" Undo config
+set undodir=~/.vim/undo
 set undofile
-set shiftwidth=2
+set undolevels=1000
+set undoreload=10000
+
+" Allow mouse to set cursor position in any mode
+set mouse=a
+
+" Use shared system clipboard
 set clipboard=unnamed
+
+" Autocomplete for Vim commands
+" First tab completes to longest string and will show the match list
+" Second tab will complete to the first full match and open the wildmenu
+set wildmenu
+set wildmode=longest:list,full
+
+" Search as you type and highlight matches
+set incsearch
+set hlsearch
+
+" Move Vim file backups created while editing out of current directory
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+
+" Indentation config
+set shiftwidth=2
 set softtabstop=2
 set expandtab
 set smarttab
 set shiftround
-set hidden                " Allow multiple files within same window
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open=1
-let g:syntastic_check_on_wq=1
-let g:syntastic_javascript_checkers=["jshint","jscs"]
-let g:syntastic_sql_checkers=["sqlint"]
+
+" GitGutter config
 let g:gitgutter_sign_column_always=1
 let g:gitgutter_eager=1
 let g:gitgutter_realtime=1
 let g:gitgutter_max_signs=512
-map [l :lprev             " Jump to previous linter error
-map ]l :lnext             " Jump to next linter error
-map Y y$                  " Make Y act like D and C - yank until EOL
+
+" Attempt to automatically determine indentation for files
+filetype indent plugin on
+
+" Ignore specified folders and files for CtrlP
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\.git$\|\|node_modules$',
+  \ 'file': '\.DS_Store$'
+  \ }
